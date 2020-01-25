@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Net;
-using System.Threading;
 using Keshax;
 
 namespace Keshax_server
 {
-    class Program
+    public class ServerExample
     {
-        
-        static void Main(string[] args)
+
+        public void TestRun()
         {
             var server = new KXServer();
             
@@ -21,8 +18,8 @@ namespace Keshax_server
             
             Controller.Post("/post",(action) delegate(KClient client)
             {
-                    Console.WriteLine(client.RawBody +" is rawbody");
-                    return client.Json(new Dictionary<string, string>() {{"message", "ok"}});
+                Console.WriteLine(client.RawBody +" is rawbody");
+                return client.Json(new Dictionary<string, string>() {{"message", "ok"}});
             });
             
             // full path to your file serve directory
@@ -30,7 +27,6 @@ namespace Keshax_server
             
             
             server.serve();
-            
         }
         
     }
