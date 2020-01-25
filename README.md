@@ -16,7 +16,7 @@ lightweight multithreaded library
 - [Installation](#installation)
 - [Quick start](#quick-start)
 - [Send JSON](#Send-JSON)
-- [Static serve](#static)
+- [Static serve](#static-serve)
 - [Attributes](#Attributes)
 
 
