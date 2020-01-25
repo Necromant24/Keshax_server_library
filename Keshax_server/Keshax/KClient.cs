@@ -55,20 +55,11 @@ namespace Keshax
         public KClient(string rawData)
         {
             parseRequest(rawData);
-            Console.WriteLine(firstLine + " - is 1st line");
-            Console.WriteLine(GetRoad(firstLine) + " - is getted road");
             SetResponser(Controller.roadMap[GetRoad(firstLine)].delAct);
             roadParam = Controller.roadMap[GetRoad(firstLine)].name;
 
         }
 
-        public string AdditionalRoad(string pattern)
-        {
-            string s = roadParam;
-            int i = roadParam.IndexOf("{");
-
-            return s;
-        }
 
 
         public string GetRoadParam()
@@ -78,10 +69,6 @@ namespace Keshax
             return s.Split()[0];
         }
 
-        
-        
-        
-        
         
         public string GetHeader(string name)
         {
@@ -96,16 +83,14 @@ namespace Keshax
                 {
                     string[] roadParts = url.Split();
                     url = roadParts[0]+" "+roadParts[1];
-                    Console.WriteLine(url);
-                    Console.WriteLine("-----------");
+                    
                     foreach (var kroad in Controller.roadMap.Keys)
                     {
-                        Console.WriteLine(kroad);
+                        
                         var reg = new Regex(@"^"+@kroad+@".*");
                         if (reg.IsMatch(url))
                         {
                             road = kroad;
-                            Console.WriteLine("matched");
                             break;
                         }
 
@@ -115,22 +100,13 @@ namespace Keshax
                 {
                     Console.WriteLine(e);
                 }
-//
-//                if (road == "GET /notfound")
-//                {
-//                    Console.WriteLine("!!!+++++qwert");
-//                }
-//                else
-//                {
-//                    Console.WriteLine("----!!!!!----");
-//                }
 
                 return road;
         } 
 
         // TODO: make funcs for header usage
 
-        public void SetResponser(Delegate del)
+        private void SetResponser(Delegate del)
         {
             makeResponse =(action)del;
         }
@@ -153,7 +129,6 @@ namespace Keshax
             this.rawText = rawText;
             string[] data = rawText.Split("\r\n\r\n".ToCharArray());
             
-            //rawBody = data[1];
             if (data.Length > 1)
             {
                 rawBody = data[1];

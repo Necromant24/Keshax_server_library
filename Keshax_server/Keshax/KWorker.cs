@@ -20,14 +20,13 @@ namespace Keshax
                 while ((bytesRead = stream.Read(data,0,data.Length))>0)
                 {
                     ms.Write(data,0,bytesRead);
-                    Console.WriteLine(stream.DataAvailable);
+                    
                     if (!stream.DataAvailable)
                     {
                         var str = Encoding.ASCII.GetString(ms.ToArray(), 0, (int)ms.Length);
                         var clnt = new KClient(str);
                 
                         // TODO: refactor 
-                
                         string resp = clnt.Answer();
                         stream.Write( Encoding.ASCII.GetBytes(resp),0,resp.Length);
                         stream.Flush();

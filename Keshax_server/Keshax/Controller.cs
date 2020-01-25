@@ -1,6 +1,7 @@
 ﻿﻿using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
+ using System.IO;
+ using System.Text.RegularExpressions;
 
 namespace Keshax
 {
@@ -47,6 +48,30 @@ namespace Keshax
             
             roadMap.Add("GET "+road,new MyStruct(varname,del));
         }
+
+
+        public static void Static(string path)
+        {
+            Controller.Get("/static/{road}",(action) delegate(KClient client)
+            {
+                var file = "";
+                try
+                {
+                    file = File.ReadAllText(path + client.GetRoadParam());
+                }
+                catch (Exception e)
+                {
+                    file = "404 not found!";
+                }
+                    
+                    
+                return client.PlainText(file);
+            });
+            
+        }
+        
+        
+        
 
         public static string GetRoad(string url)
         {
