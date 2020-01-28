@@ -25,7 +25,7 @@ Just clone this project and use as project, or delete Program.cs file and use as
 
 
 ## Quick start
-    Controller controller = new Controller();
+    var server = new KXServer();
     
     action del = delegate(KClient client)
     {
@@ -33,7 +33,7 @@ Just clone this project and use as project, or delete Program.cs file and use as
     }
     controller.Get("/test",del);
     // will serve on localhost:3000
-    controller.serve();
+    server.serve();
 
 This was a base simple http server example.
 To see the response for this example type in browser http://localhost:3000/test
