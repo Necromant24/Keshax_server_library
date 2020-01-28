@@ -31,7 +31,7 @@ Just clone this project and use as project, or delete Program.cs file and use as
     {
         client.HTML("<h1>it works!</h1>");
     }
-    controller.Get("/test",del);
+    Controller.Get("/test",del);
     // will serve on localhost:3000
     server.serve();
 
