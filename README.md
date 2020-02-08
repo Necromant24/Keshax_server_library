@@ -29,7 +29,7 @@ Just clone this project and use as project, or delete Program.cs file and use as
     
     action del = delegate(KClient client)
     {
-        client.HTML("<h1>it works!</h1>");
+        return client.HTML("<h1>it works!</h1>");
     }
     Controller.Get("/test",del);
     // will serve on localhost:3000
@@ -45,7 +45,7 @@ To see the response for this example type in browser http://localhost:3000/test
     {
         var dict = new Dictionary<string,int>();
         dict["tosts"]=5;
-        client.Json(dict);
+        return client.Json(dict);
     }
 or
 
@@ -57,7 +57,7 @@ or
     {
         var mystruct = new MyStruct ();
         mystruct.tosts = 5;
-        client.Json(mystruct);
+        return client.Json(mystruct);
     }
 
 
